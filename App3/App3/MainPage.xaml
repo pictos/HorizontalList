@@ -4,11 +4,35 @@
              xmlns:local="clr-namespace:App3"
              x:Class="App3.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+    <StackLayout VerticalOptions="Center">
+        <RelativeLayout HeightRequest="90">
+            <ListView Rotation                        ="270"
+                      RowHeight                       ="90"
+                      VerticalOptions                 ="FillAndExpand"
+                      CachingStrategy                 ="RecycleElement"
+                      HorizontalOptions               ="FillAndExpand"
+                      RelativeLayout.XConstraint      ="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.5,Constant=-45}"
+                      RelativeLayout.YConstraint      ="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=-0.5,Constant=45}"
+                      RelativeLayout.WidthConstraint  ="{ConstraintExpression Type=Constant,Constant=90}"
+                      RelativeLayout.HeightConstraint ="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}"
+                      x:Name="Lista">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView Rotation        ="90"
+                                         BackgroundColor ="Transparent"
+                                         Padding         ="0">
+                                <Image Source="https://omicrono.elespanol.com/wp-content/uploads/2015/08/github-mark.png"
+                                       Aspect="AspectFill"/>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Effects>
+                    <local:NoScroll/>
+                </ListView.Effects>
+            </ListView>
+        </RelativeLayout>
     </StackLayout>
 
 </ContentPage>
